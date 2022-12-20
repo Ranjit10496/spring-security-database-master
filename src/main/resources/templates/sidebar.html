@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+<!-- Sidebar Start -->
+<div class="sidebar pe-4 pb-3" th:fragment="sidebar">
+    <nav class="navbar bg-light navbar-light">
+        <a href="index.html" class="navbar-brand mx-4 mb-3">
+            <h3 style="color:red" class="text-primary"><i></i>Atithih</h3>
+        </a>
+        <!--                <div class="d-flex align-items-center ms-4 mb-4">-->
+        <!--                    <div class="position-relative">-->
+        <!--&lt;!&ndash;                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">&ndash;&gt;-->
+        <!--                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>-->
+        <!--                    </div>-->
+        <!--                    <div class="ms-3">-->
+        <!--                        <h6 style="color:DodgerBlue" class="mb-0">Ranjit Kumar</h6>-->
+        <!--                        <span>Admin</span>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <div class="navbar-nav w-100">
+            <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <!--                    <div class="nav-item dropdown">-->
+            <!--                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Booking</a>-->
+            <!--                        <div class="dropdown-menu bg-transparent border-0">-->
+            <!--                            <a href="button.html" class="dropdown-item">Calender</a>-->
+            <!--                            <a href="typography.html" class="dropdown-item">Billing</a>-->
+            <!--                            <a href="element.html" class="dropdown-item">Receipt</a>-->
+            <!--                            <a href="element.html" class="dropdown-item">Invoice</a>-->
+
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <a th:href="@{/bookings}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Booking</a>
+            <a th:href="@{/customers}" class="nav-item nav-link"><i class="fa fa-user-circle"></i>Customer</a>
+            <a th:href="@{/hotels}" class="nav-item nav-link"><i class="fas fa-hotel"></i>Hotel</a>
+            <a th:href="@{/inventory-calendar}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Calender</a>
+            <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Billing</a>
+            <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Receipt</a>
+            <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Invoice</a>
+
+            <a th:href="@{/hotel-inventories}" class="nav-item nav-link"><i class="fa fa-user-circle"></i>Inventory</a>
+            <a th:href="@{/room-types}" class="nav-item nav-link"><i class="fa fa-user-circle"></i>RoomType</a>
+            <a th:href="@{/rate-plans}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>RatePlan</a>
+            <a href="#" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>User</a>
+        </div>
+    </nav>
+</div>
+<!-- Sidebar End -->
+</body>
+</html>

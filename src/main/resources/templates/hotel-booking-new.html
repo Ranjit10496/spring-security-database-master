@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link th:href="@{img/user.jpg}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link th:href="@{fonts/font.css}" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{css/all.min.css}" rel="stylesheet">
+    <link th:href="@{css/bootstrap-icons.css}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link th:href="@{css/owl.carousel.min.css}" rel="stylesheet">
+    <link th:href="@{css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet"/>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link th:href="@{css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-xxl position-relative bg-white d-flex p-0">
+    <!-- Spinner Start -->
+    <div id="spinner"
+         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- start sidebar-->
+
+    <div class="sidebar pe-4 pb-3">
+        <nav th:replace="sidebar::sidebar"></nav>
+
+    </div>
+    <!--  end sidebar-->
+
+    <!-- Content Start -->
+    <div class="content">
+        <!-- navbar start-->
+        <nav th:replace="navbar::navbar"></nav>
+        <!-- navbar end-->
+
+        <!-- content body-->
+        <div class="mt-4">
+            <div class="container entity-header" style="background-color: #F5FFFA">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="entity-header-text"> Create New HotelBooking</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="background-color: #F5FFFA">
+                <form th:action="@{/bookings-create}" th:object="${booking}" method="post" style="margin: 10px">
+
+
+                    <div class="container">
+                        <div class="row mb-2">
+                            <div class="col-md-3">
+                                <label>Check in Date</label>
+                                <input type="date" class="form-control" name="checkInDate" th:field="*{checkInDate}">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label>Check out Date</label>
+                                <input type="date" class="form-control" name="checkOutDate" th:field="*{checkOutDate}">
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <label>No Of Adult</label>
+                                <input type="number" class="form-control" name="noOfAdult" th:field="*{noOfAdult}">
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <label>No of Children</label>
+                                <input type="number" class="form-control" name="noOfChild" th:field="*{noOfChild}">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label>No of Room</label>
+                                <input type="number" class="form-control" name="noOfRoom" th:field="*{noOfRoom}">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label>No of Night</label>
+                                <input type="number" class="form-control" name="noOfNight" th:field="*{noOfNight}">
+                            </div>
+
+                            <div class="row mb-2"></div>
+                            <div class="col-md-3">
+                                <label>Hotel</label>
+                                <select th:field="*{hotel}" class="form-control"
+                                        aria-label=".form-select-sm example">
+                                    <option th:each="hotel:${hotels}" th:value="${hotel.id}"
+                                            th:text="${hotel.name}"></option>
+
+                                </select>
+
+                            </div>
+                            <div class="col-md-3">
+                                <label>RoomType</label>
+                                <select th:field="*{roomType}" class="form-control"
+                                        aria-label=".form-select-sm example">
+                                    <option th:each="roomType:${roomTypes}" th:value="${roomType.id}"
+                                            th:text="${roomType.name}"></option>
+
+                                </select>
+
+                            </div>
+                            <div class="col-md-3">
+                                <label>RatePlan</label>
+                                <select th:field="*{ratePlan}" class="form-control"
+                                        aria-label=".form-select-sm example">
+                                    <option th:each="ratePlan:${ratePlans}" th:value="${ratePlan.id}"
+                                            th:text="${ratePlan.name}"></option>
+
+
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <!--                        <div class="row mb-2">-->
+
+                        <!--                            <div class="col-md-3">-->
+                        <!--                                <select class="form-select mb-3 mt-4" aria-label=".form-select-sm example">-->
+                        <!--                                    <option>Hotel</option>-->
+                        <!--                                </select>-->
+                        <!--                            </div>-->
+
+                        <!--                            <div class="col-md-3">-->
+                        <!--                                <select class="form-select mb-3 mt-4" aria-label=".form-select-sm example">-->
+                        <!--                                    <option>Room Type</option>-->
+                        <!--                                </select>-->
+                        <!--                            </div>-->
+
+                        <!--                            <div class="col-md-3">-->
+                        <!--                                <select class="form-select mb-3 mt-4" aria-label=".form-select-sm example">-->
+                        <!--                                    <option>Rate Plan</option>-->
+                        <!--                                </select>-->
+                        <!--                            </div>-->
+
+                        <!--                        </div>-->
+
+                    </div>
+
+                    <div class="container entity-header mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="entity-header-text">Customer Info</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row mb-2">
+                            <div class="col-md">
+
+                                <label for="exampleInputFirstName1">First Name</label>
+                                <input type="text" class="form-control"
+                                       id="exampleInputFirstName1" name="firstName" th:field="*{firstName}">
+                            </div>
+
+                            <div class="col-md">
+                                <label for="exampleInputLastName1">Last Name</label>
+                                <input type="text" class="form-control"
+                                       id="exampleInputLastName1" name="lastName" th:field="*{lastName}">
+                            </div>
+
+                            <div class="col-md">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="text" class="form-control"
+                                       id="exampleInputEmail1" name="email" th:field="*{email}">
+                            </div>
+
+
+                            <div class="col-md">
+                                <label for="exampleInputMobile1">Mobile</label>
+                                <input type="text" class="form-control"
+                                       id="exampleInputMobile1" name="mobile" th:field="*{mobile}">
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+
+                            <div class="col-md">
+                                <label>Gender</label>
+                                <select typeof="text" name="gender" class="form-select" th:field="*{gender}">
+                                    <option selected value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md">
+                                <label for="exampleInputAge1">Age</label>
+                                <input type="number" class="form-control"
+                                       id="exampleInputAge1" placeholder="Age" name="age" th:field="*{age}">
+                            </div>
+
+                            <div class="col-md">
+                                <label>ID Type</label>
+                                <select typeof="text" name="idType" class="form-select" th:field="*{idType}">
+                                    <option selected value="Aadhaar Card">Aadhaar Card</option>
+                                    <option value="Pan Card">Pan Card</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md">
+                                <label for="exampleInputIdNo1">ID No</label>
+                                <input type="text" class="form-control"
+                                       id="exampleInputIdNo1" placeholder="IdNo" name="IdNo" th:field="*{idNo}">
+                            </div>
+
+                            <!--                            <div class="row mb-2"></div>-->
+                            <!--                            <div class="col-md-3">-->
+                            <!--                                <label for="exampleInputZipcode">Zipcode</label>-->
+                            <!--                                <input type="number" class="form-control"-->
+                            <!--                                       id="exampleInputZipcode" placeholder="Zipcode" name="Zipcode">-->
+                            <!--                            </div>-->
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="row entity-footer">
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+
+                        <div class="col-md-1">
+                            <a th:href="@{/bookings}" class="btn btn-danger">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- Footer Start -->
+    <!-- <footer th:replace="footer::footer1"></footer>-->
+    <!-- Footer End -->
+
+    <!-- Content End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/easing.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/moment-timezone.min.js"></script>
+<script src="js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+</body>
+
+</html>
