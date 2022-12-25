@@ -57,10 +57,10 @@
         <div class="container entity-header">
             <div class="row">
                 <div class="col-md-10">
-                    <span class="entity-header-text">Hotel</span>
+                    <span class="entity-header-text">Rate Calendar</span>
                 </div>
                 <div class="col-md-2">
-                    <a th:href="@{/customers-create}" class="btn btn-sm btn-primary ">
+                    <a th:href="@{/rate-calendar-create}" class="btn btn-sm btn-primary ">
                         <i class="fa fa-plus-square" aria-hidden="true"></i> Create</a>
                 </div>
             </div>
@@ -70,30 +70,29 @@
         <div class="col-12">
             <div>
                 <div>
-                    <table class="table">
+                    <table class="table" style="background-color: #F5FFFA">
                         <thead>
                         <tr>
-                            <th scope="col">FirstName</th>
-                            <th scope="col">LastName</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Mobile</th>
-                            <th scope="col">Age</th>
-                            <th scope="col">IdType</th>
-                            <th scope="col">IdNo</th>
-                            <th scope="col">Gender</th>
+                            <th scope="col">SingleOccupancy</th>
+                            <th scope="col">DoubleOccupancy</th>
+                            <th scope="col">ExtraAdultPrice</th>
+                            <th scope="col">ExtraChildPrice</th>
+                            <th scope="col">ApplicableDate</th>
+                            <th scope="col">ApplicableDays</th>
+                            <th scope="col">Hotel</th>
+                            <th scope="col">RatePlan</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="obj:${customers}">
-                            <td th:text="${obj.firstName}"></td>
-                            <td th:text="${obj.lastName}"></td>
-                            <td th:text="${obj.email}"></td>
-                            <td th:text="${obj.mobile}"></td>
-                            <td th:text="${obj.age}"></td>
-                            <td th:text="${obj.idType}"></td>
-                            <td th:text="${obj.idNo}"></td>
-                            <td th:text="${obj.gender}"></td>
-
+                        <tr th:each="obj:${rateCalendars}">
+                            <td th:text="${obj.singleOccupancy}"></td>
+                            <td th:text="${obj.doubleOccupancy}"></td>
+                            <td th:text="${obj.extraAdultPrice}"></td>
+                            <td th:text="${obj.extraChildPrice}"></td>
+                            <td th:text="${obj.applicableDate}"></td>
+                            <td th:text="${obj.applicableDays}"></td>
+                            <td th:text="${obj.hotel.name}"></td>
+                            <td th:text="${obj.ratePlan.name}"></td>
 
                         </tr>
                         </tbody>

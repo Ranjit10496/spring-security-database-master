@@ -20,4 +20,10 @@ public class RatePlan {
     private Hotel hotel;
     @ManyToOne
     private RoomType roomType;
+
+    public RatePlan(String name, Hotel hotel, RoomType roomType) {
+        this.name = name;
+        this.hotel = hotel;
+        this.roomType = roomType;
+    }
 }
